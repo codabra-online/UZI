@@ -42,7 +42,7 @@ document.querySelector('#search').addEventListener('input', function() {
     for (i = 0; i < document.querySelector('.rec-list').getElementsByClassName('rec-list__item').length; i++) {
         if (i != 0) {
             item = document.querySelector('.rec-list').getElementsByClassName('rec-list__item')[i];
-            txtValue = item.textContent || item.innerText;
+            txtValue = item.firstChild.textContent || item.firstChild.innerText;
             if (txtValue.toUpperCase().indexOf(document.querySelector('#search').value.toUpperCase()) > -1) {
                 item.style.display = 'flex';
             } else {
@@ -55,9 +55,9 @@ document.querySelector('#search').addEventListener('input', function() {
 // turning off the loader
 document.addEventListener("DOMNodeInserted", function() { 
     document.querySelector('.header').style.display = 'flex';
-    document.querySelector('.loader').style.animation = '.65s ease-in fade';
+    document.querySelector('.loader').style.animation = '1.5s ease-in fade';
     setTimeout(function() {
         document.querySelector('.loader').style.opacity = 0;
         document.querySelector('.loader').style.display = 'none';
-    }, 650);
+    }, 1500);
 });

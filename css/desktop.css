@@ -124,16 +124,16 @@ a {
 .loader::after {
     display: block;
     content: '';
-    border: 1.3333rem solid #f3f3f3;
-    border-top: 1.3333rem solid #3399cc; 
+    border: 1rem solid #f3f3f3;
+    border-top: 1rem solid #3399cc; 
     border-radius: 50%;
-    height: 10rem;
-    width: 10rem;
+    height: 7.5rem;
+    width: 7.5rem;
     animation: spin 1.25s linear infinite;
 
     position: fixed;
-    left: calc((100% - 10rem) / 2);
-    top: calc((100% - 10rem) / 2);
+    left: calc((100% - 7.5rem) / 2);
+    top: calc((100% - 7.5rem) / 2);
 }
 
 @keyframes spin {

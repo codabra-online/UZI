@@ -37,4 +37,14 @@
     }
 
     .rec-list__item p { font-size: 2rem; }
+
+    .loader::after {
+        border: 2rem solid #f3f3f3;
+        border-top: 2rem solid #3399cc; 
+        height: 15rem;
+        width: 15rem;
+
+        left: calc((100% - 15rem) / 2);
+        top: calc((100% - 15rem) / 2);
+    }
 }
