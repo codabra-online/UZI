@@ -4,34 +4,28 @@
         height: 4.5rem;
     }
 
-    .header h1 {
-        font-size: 2rem;
-    }
+    .header h1 { font-size: 2rem; }
 
-    .banner {
-        height: 22.5rem;
-    }
+    .banner { height: 25rem; }
 
-    .banner h1 {
-        font-size: 7rem;
-    }
+    .banner h1 { font-size: 7rem; }
 
     #search, .rec-list {
-        margin: 2rem 0 0 4%;
+        margin: 2rem 0 0 5%;
         border: 0.25rem solid #dbdbdb;
         border-radius: 0.3rem;
     }
 
     #search {
         height: 4.5rem;
-        width: 90%;
+        width: 87.4%;
         font-size: 2.25rem;
         padding: 0.4rem 1.5rem;
     }
 
     .rec-list {
-        height: 65vh;
-        width: 92.5%;
+        height: 80%;
+        width: 90%;
     }
 
     .rec-list__item {
@@ -42,7 +36,5 @@
         border-bottom: 0.25rem solid #dbdbdb;
     }
 
-    .rec-list__item p {
-        font-size: 2rem;
-    }
+    .rec-list__item p { font-size: 2rem; }
 }
