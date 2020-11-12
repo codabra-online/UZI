@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'Lato';
+    font-family: "Lato";
     font-weight: 300;
-    src: url('../fonts/Lato-Light.ttf');
+    src: url("../fonts/Lato-Light.ttf");
 }
 
 * {
-    font-family: 'Arial';
+    font-family: "Arial";
     font-size: 1vw;
     margin: 0;
     padding: 0;
@@ -18,12 +18,19 @@ a {
     text-decoration: none;
 }
 
+.header h1, .banner h1 {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+}
+
 .header {
     position: fixed;
-    display: none;
+    display: flex;
     align-items: center;
-    height: 4rem;
+
     width: 100%;
+    height: 4rem;
     transition: .15s;
 }
 
@@ -33,21 +40,17 @@ a {
 }
 
 .banner {
-    background: #3399cc url('https://ssl.gstatic.com/atari/images/simple-header-blended-small.png') top / cover;
+    background: #3399cc url("https://ssl.gstatic.com/atari/images/simple-header-blended-small.png") top / cover;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 20rem;
+
     width: 100%;
+    height: 20rem;
 }
 
 .banner h1 { font-size: 6.5rem; }
-
-.header h1, .banner h1 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    color: #ffffff;
-}
 
 #search, .rec-list {
     margin: 1.5rem 0 0 7.5%;
@@ -56,37 +59,48 @@ a {
 }
 
 #search {
-    height: 2.25rem;
     width: 83.4%;
+    height: 2.25rem;
+
     padding: 0.4rem 1rem;
     font-size: 1.25rem;
     color: #303030;
 }
 
 .rec-list {
-    height: 50rem;
     width: 85%;
+    height: 50rem;
+
     padding: 0.2rem;
     overflow: hidden scroll;
-    flex-direction: column;
+}
+
+.rec-list__error {
+    position: absolute;
+    display: none;
+
+    font-size: 2rem;
+    color: #c0c0c0;
+
+    padding: 1.5rem 0 0 0;
 }
 
 .rec-list__item {
+    width: 97.75%;
+    height: 2rem;
+
     margin: 0 0 0 1rem;
     padding: 0.875rem 0 0 0;
-    height: 2rem;
-    width: 97.75%;
     border-bottom: 0.15rem solid #dbdbdb;
+
     display: flex;
 }
 
+.rec-list__item:hover { background-color: #ebebeb; }
+
 .rec-list__item p {
     font-size: 1.125rem;
-}
 
-.rec-list__item:hover { background: #ebebeb; }
-
-.rec-list__item p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -97,51 +111,19 @@ a {
     padding: 0 1rem 0 0;
 }
 
-.rec-list__item:first-child p:first-child {
-    text-transform: uppercase;
-    color: #dd4b39;
-    font-weight: 700;
-}
-
-.rec-list__item:first-child p:last-child {
-    text-transform: uppercase;
-    color: #777777;
-}
+.rec-list__item a:hover { color: #0000ff; }
 
 .rec-list__item:first-child { background: none; }
 
-.rec-list__item > a:hover { color: #0000ff; }
+.rec-list__item:first-child p:first-child {
+    font-weight: 700;
+    color: #dd4b39;
+    text-transform: uppercase;
+}
+
+.rec-list__item:first-child p:last-child {
+    color: #777777;
+    text-transform: uppercase;
+}
 
 .no-select { user-select: none; }
-
-.loader {
-    position: fixed;
-    background-color: #ffffff;
-    height: 100%;
-    width: 100%;
-}
-
-.loader::after {
-    display: block;
-    content: '';
-    border: 1rem solid #f3f3f3;
-    border-top: 1rem solid #3399cc; 
-    border-radius: 50%;
-    height: 7.5rem;
-    width: 7.5rem;
-    animation: spin 1.25s linear infinite;
-
-    position: fixed;
-    left: calc((100% - 7.5rem) / 2);
-    top: calc((100% - 7.5rem) / 2);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes fade {
-    0% { opacity: 100; }
-    100% { opacity: 0; }
-}

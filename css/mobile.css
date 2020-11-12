@@ -17,34 +17,30 @@
     }
 
     #search {
-        height: 4.5rem;
-        width: 87.4%;
         font-size: 2.25rem;
+        width: 87.4%;
+        height: 4.5rem;
+
         padding: 0.4rem 1.5rem;
     }
 
     .rec-list {
-        height: 80%;
         width: 90%;
+        height: 80%;
+    }
+
+    .rec-list__error {
+        font-size: 2.5rem;
     }
 
     .rec-list__item {
+        width: 96%;
+        height: 4rem;
+
         margin: 0 0 0 1.5rem;
         padding: 1.5rem 0 0 0;
-        height: 4rem;
-        width: 96%;
         border-bottom: 0.25rem solid #dbdbdb;
     }
 
     .rec-list__item p { font-size: 2rem; }
-
-    .loader::after {
-        border: 2rem solid #f3f3f3;
-        border-top: 2rem solid #3399cc; 
-        height: 15rem;
-        width: 15rem;
-
-        left: calc((100% - 15rem) / 2);
-        top: calc((100% - 15rem) / 2);
-    }
 }
