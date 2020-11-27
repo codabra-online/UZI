@@ -9,6 +9,7 @@
     font-size: 1vw;
     margin: 0;
     padding: 0;
+    outline: 0;
 }
 
 html, body { max-width: 100vw; height: 100vh; }
@@ -25,19 +26,25 @@ a {
 }
 
 .header {
-    position: fixed;
     display: flex;
     align-items: center;
 
     width: 100%;
     height: 4rem;
-    transition: .15s;
+
+    background: #1e1e1e;
+    position: fixed;
+    transition: 0.15s;
 }
 
-.header h1 {
-    font-size: 1.5rem;
-    padding: 0 0 0 2rem;
+.header h1 { 
+    padding: 0 2.5rem;
+
+    font-size: 1.5rem; 
+    transition: 0.15s;
 }
+
+.header h1:hover { color: #e1e1e1; }
 
 .banner {
     background: #3399cc url("https://ssl.gstatic.com/atari/images/simple-header-blended-small.png") top / cover;
@@ -52,31 +59,64 @@ a {
 
 .banner h1 { font-size: 6.5rem; }
 
-#search, .rec-list {
+.interaction {
+    width: 85.7%;
+    height: 4rem;
     margin: 1.5rem 0 0 7.5%;
+
+    display: flex;
+}
+
+.search, .rec-list, .refresh {
     border: 0.15rem solid #dbdbdb;
     border-radius: 0.2rem;
 }
 
-#search {
-    width: 83.4%;
-    height: 2.25rem;
+.search {
+    width: 100%;
 
     padding: 0.4rem 1rem;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     color: #303030;
+}
+
+.search:focus { border: 0.15rem solid #bdbdbd; }
+
+.refresh {
+    width: 4.332rem;
+    margin: 0 0 0 0.75rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+    
+    cursor: pointer;
+    outline: 0;
+}
+
+.refresh:active { border: 0.15rem solid #bdbdbd; }
+
+.refresh img {
+    width: 3rem;
+    height: 3rem;
+
+    transition: 0.5s;
 }
 
 .rec-list {
     width: 85%;
     height: 50rem;
-
+    margin: 1.5rem 0 0 7.5%;
     padding: 0.2rem;
+
+    justify-content: center;
+    
     overflow: hidden scroll;
 }
 
-.rec-list__error {
-    position: absolute;
+.rec-list__message {
     display: none;
 
     font-size: 2rem;

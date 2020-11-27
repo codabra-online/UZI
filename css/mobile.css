@@ -1,37 +1,54 @@
 @media screen and (max-width: 425px) {
     .header {
         position: absolute;
+
         height: 4.5rem;
+        padding: 0.25rem;
     }
 
-    .header h1 { font-size: 2rem; }
+    .header h1 { font-size: 2.5rem; }
 
     .banner { height: 25rem; }
 
-    .banner h1 { font-size: 7rem; }
+    .banner h1 { font-size: 8rem; }
 
-    #search, .rec-list {
-        margin: 2rem 0 0 5%;
+    .search, .rec-list, .refresh {
         border: 0.25rem solid #dbdbdb;
         border-radius: 0.3rem;
     }
 
-    #search {
-        font-size: 2.25rem;
-        width: 87.4%;
-        height: 4.5rem;
+    .interaction {
+        width: 90.9%;
+        height: 6rem;
+        margin: 2rem 0 0 5%;
+    }
 
+    .search {
+        font-size: 2.25rem;
         padding: 0.4rem 1.5rem;
+    }
+
+    .search:focus { border: 0.25rem solid #bdbdbd; }
+
+    .refresh {
+        width: 6.7375rem;
+        margin: 0 0 0 1.25rem;
+    }
+
+    .refresh:active { border: 0.25rem solid #bdbdbd; }
+
+    .refresh img {
+        width: 4.5rem;
+        height: 4.5rem;
     }
 
     .rec-list {
         width: 90%;
         height: 80%;
+        margin: 2rem 0 0 5%;
     }
 
-    .rec-list__error {
-        font-size: 2.5rem;
-    }
+    .rec-list__message { font-size: 2.5rem; }
 
     .rec-list__item {
         width: 96%;

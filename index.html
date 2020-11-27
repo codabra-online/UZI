@@ -4,23 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="icon" href="./favicon.ico">
+    <link rel="icon" href="https://uzi-samara.ru/favicon.ico">
     <link rel="stylesheet" href="./css/desktop.css" type="text/css">
     <link rel="stylesheet" href="./css/mobile.css" type="text/css">
     <title>Выбор протокола</title>
 </head>
 
 <body>
-    <div class="loader"></div>
-    <div class="header"><a href="./index.html"><h1>Выбор протокола</h1></a></div>
+    <div class="header">
+        <a href="./index.html"><h1>Выбор протокола</h1></a>
+        <a href="./archive.html"><h1>Архив</h1></a>
+    </div>
     <div class="banner"><h1 class="no-select">Выбор протокола</h1></div>
-    <input type="text" id="search" placeholder="Поиск по наименованию" maxlength="160">
+    <div class="interaction">
+        <input type="text" class="search" placeholder="Поиск" maxlength="160">
+    </div>
     <div class="rec-list">
         <div class="rec-list__item">
             <p class="no-select">название</p>
             <p class="no-select">последнее изменение</p>
         </div>
-        <p class="rec-list__error no-select">Похоже, что-то пошло не так...</p>
+        <p class="rec-list__message no-select">Похоже, что-то пошло не так...</p>
     </div><br><br>
     <script src="./js/main.js"></script>
 </body>
