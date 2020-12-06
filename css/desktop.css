@@ -117,7 +117,7 @@ a {
 }
 
 .rec-list__message {
-    display: none;
+    display: block;
 
     font-size: 2rem;
     color: #c0c0c0;
@@ -165,5 +165,11 @@ a {
     color: #777777;
     text-transform: uppercase;
 }
+
+.bg-none { background: none; }
+
+.flex { display: flex; }
+
+.hidden { display: none; }
 
 .no-select { user-select: none; }

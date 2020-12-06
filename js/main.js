@@ -1,7 +1,9 @@
-var clicked = 0;
+// button clicks number
+let clicked = 0;
 
-// refresh delay initializing
-var refresh = setInterval(Refresh, (document.title == "Выбор протокола") ? 60000 : 15000);
+// refresh delay & lock initialization
+let refresh = setInterval(Refresh, (document.title == "Выбор протокола") ? 60000 : 15000);
+let locked = false;
 
 // webhook urls for both pages
 const hooks = [
@@ -11,7 +13,7 @@ const hooks = [
 
 // a bit of "on load cfg"
 window.onload = function() {
-    document.querySelector(".header").style.background = "none";
+    document.querySelector(".header").classList.add("bg-none");
     Fetch();
 }
 
@@ -29,21 +31,14 @@ function Fetch() {
             block.className = "rec-list__item";
             link.setAttribute("href", prtc.webViewLink);
             name.textContent = prtc.name;
-            if (document.title == "Выбор протокола") {
-                timestamp.textContent = new Date(prtc.modifiedTime).toLocaleString("ru", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric"
-                })
-            } else {
-                timestamp.textContent = new Date(prtc.createdTime).toLocaleString("ru", {
-                    hour: "numeric",
-                    minute: "numeric",
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric"
-                })
-            }
+
+            timestamp.textContent = new Date((document.title == "Выбор протокола") ? prtc.modifiedTime : prtc.createdTime).toLocaleString("ru", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                ...(document.title == "Архив" && {hour: "numeric"}),
+                ...(document.title == "Архив" && {minute: "numeric"})
+            })
 
             document.querySelector(".rec-list").appendChild(block);
             block.appendChild(link);
@@ -53,12 +48,16 @@ function Fetch() {
     })
     .catch(function() {
         // error message
-        for (i = 0; i < document.querySelector(".rec-list").getElementsByClassName("rec-list__item").length; i++) { document.querySelector(".rec-list").getElementsByClassName("rec-list__item")[i].style.display = "none"; }
-        document.querySelector(".rec-list").style.display = "flex";
-        document.querySelector(".rec-list__message").style.display = "block";
+        for (i = 0; i < document.querySelector(".rec-list").getElementsByClassName("rec-list__item").length; i++) { 
+            document.querySelector(".rec-list").getElementsByClassName("rec-list__item")[i].classList.add("hidden");
+        }
+
+        document.querySelector(".rec-list").classList.add("flex");
+        document.querySelector(".rec-list__message").classList.remove("hidden");
     });
 }
 
+// list refreshing func
 function Refresh() {
     clearInterval(refresh); refresh = setInterval(Refresh, (document.title == "Выбор протокола") ? 60000 : 15000);
     for (i = document.querySelector(".rec-list").getElementsByClassName("rec-list__item").length - 1; i != 0; i--) { 
@@ -74,25 +73,13 @@ function Search() {
             let item = document.querySelector(".rec-list").getElementsByClassName("rec-list__item")[i];
             let txtValue = item.firstChild.textContent || item.firstChild.innerText;
             if (txtValue.toUpperCase().indexOf(document.querySelector(".search").value.toUpperCase()) > -1) {
-                item.style.display = "flex";
+                item.classList.remove("hidden");
             } else {
-                item.style.display = "none";
+                item.classList.add("hidden");
             }
         }
     }
 }
-
-// header opacity
-window.addEventListener("scroll", function() {
-    // this feature turns off on mobile devices
-    if (window.innerWidth > 425) {
-        if (window.pageYOffset >= 50) {
-            document.querySelector(".header").style.background = "#1e1e1e";
-        } else {
-            document.querySelector(".header").style.background = "none";
-        }
-    }
-});
 
 // searching on input
 document.querySelector(".search").addEventListener("input", Search);
@@ -100,7 +87,21 @@ document.querySelector(".search").addEventListener("input", Search);
 // icon rotate on click & refresh
 if (document.title == "Архив") {
     document.querySelector(".refresh").addEventListener("click", function() {
-        clicked += 1; document.querySelector(".refresh img").style.transform = `rotate(${180 * clicked}deg)`;
-        Refresh();
+        if (!locked) {
+            locked = true; setTimeout(function() { locked = false }, 3000);
+            clicked += 1; document.querySelector(".refresh img").style.transform = `rotate(${180 * clicked}deg)`;
+            Refresh();
+        }
     });
 }
+
+// header opacity (it turns off on mobile devices)
+window.addEventListener("scroll", function() {
+    if (window.innerWidth > 425) {
+        if (window.pageYOffset >= 50) {
+            document.querySelector(".header").classList.remove("bg-none");
+        } else {
+            document.querySelector(".header").classList.add("bg-none");
+        }
+    }
+});
